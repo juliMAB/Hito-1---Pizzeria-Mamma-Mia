@@ -68,9 +68,19 @@ npm run dev
 
 ### Home
 - **Banner hero** con imagen de fondo
-- **Grid de pizzas** con información detallada
-- **Cards de Bootstrap** con precios formateados
-- **Botones de acción** para ver más y añadir al carrito
+- **Grid de pizzas** usando componente CardPizza
+- **Tres pizzas fijas** con props específicos
+
+### CardPizza
+- **Componente reutilizable** para mostrar información de pizzas
+- **Props requeridos:**
+  - `name` (string): Nombre de la pizza
+  - `price` (number): Precio de la pizza
+  - `ingredients` (array): Lista de ingredientes
+  - `img` (string): URL de la imagen
+- **Diseño responsive** con Bootstrap cards
+- **Precios formateados** con separador de miles
+- **Botones de acción** (Ver Más, Añadir) sin funcionalidad por ahora
 
 ### Footer
 - **Información de copyright**
