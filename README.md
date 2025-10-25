@@ -6,6 +6,7 @@ Un proyecto de React con Vite para una pizzería.
 
 - **React 18** - Librería de JavaScript para construir interfaces de usuario
 - **Vite** - Herramienta de construcción rápida para desarrollo web moderno
+- **Bootstrap 5** - Framework CSS para diseño responsive y componentes
 - **ESLint** - Linter para mantener la calidad del código
 
 ## 📋 Requisitos
