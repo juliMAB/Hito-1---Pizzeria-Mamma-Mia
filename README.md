@@ -83,8 +83,11 @@ npm run dev
 - **Botones de acción** (Ver Más, Añadir) sin funcionalidad por ahora
 
 ### Footer
-- **Información de copyright**
-- **Créditos de tecnologías utilizadas**
+- **Copyright principal:** © 2021 - Pizzería Mamma Mia! - Todos los derechos reservados
+- **Información de contacto:** Ubicación, teléfono y email
+- **Diseño responsive:** Grid de Bootstrap para organizar la información
+- **Branding adicional:** Slogan y créditos de tecnologías
+- **Llamado desde App.jsx:** Integrado en la estructura principal
 
 ## 🎨 Desarrollo
 
