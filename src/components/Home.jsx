@@ -1,3 +1,5 @@
+import { formatPrice } from '../utils/formatters'
+
 const Home = () => {
   const pizzas = [
     {
@@ -68,7 +70,7 @@ const Home = () => {
                 <div className="mt-auto">
                   <div className="d-flex justify-content-between align-items-center">
                     <h4 className="text-success mb-0">
-                      Precio: ${pizza.price.toLocaleString()}
+                      Precio: {formatPrice(pizza.price)}
                     </h4>
                   </div>
                   <div className="d-flex gap-2 mt-3">

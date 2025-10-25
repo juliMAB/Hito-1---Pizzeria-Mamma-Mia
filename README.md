@@ -38,16 +38,43 @@ npm run dev
 ## 🏗️ Estructura del proyecto
 
 ```
-├── public/          # Archivos estáticos
-├── src/             # Código fuente
-│   ├── assets/      # Recursos (imágenes, íconos, etc.)
-│   ├── App.jsx      # Componente principal
-│   ├── main.jsx     # Punto de entrada
-│   └── index.css    # Estilos globales
-├── index.html       # Template HTML
-├── vite.config.js   # Configuración de Vite
-└── package.json     # Dependencias y scripts
+├── public/              # Archivos estáticos
+├── src/                 # Código fuente
+│   ├── components/      # Componentes de React
+│   │   ├── Navbar.jsx   # Barra de navegación con menú y carrito
+│   │   ├── Home.jsx     # Página principal con pizzas
+│   │   ├── Footer.jsx   # Pie de página
+│   │   └── index.js     # Exportaciones de componentes
+│   ├── utils/           # Funciones utilitarias
+│   │   └── formatters.js # Funciones de formateo (precios, números)
+│   ├── assets/          # Recursos (imágenes, íconos, etc.)
+│   ├── App.jsx          # Componente principal
+│   ├── main.jsx         # Punto de entrada
+│   └── index.css        # Estilos globales
+├── index.html           # Template HTML
+├── vite.config.js       # Configuración de Vite
+└── package.json         # Dependencias y scripts
 ```
+
+## 🧩 Componentes
+
+### Navbar
+- **Navegación principal** con logo de la pizzería
+- **Menú condicional** basado en estado de autenticación (token)
+  - Usuario no logueado: 🔐 Login, 🔐 Register
+  - Usuario logueado: 🔓 Profile, 🔒 Logout
+- **Carrito de compras** con total formateado: 🛒 Total: $25.000
+- **Responsive** con Bootstrap navbar
+
+### Home
+- **Banner hero** con imagen de fondo
+- **Grid de pizzas** con información detallada
+- **Cards de Bootstrap** con precios formateados
+- **Botones de acción** para ver más y añadir al carrito
+
+### Footer
+- **Información de copyright**
+- **Créditos de tecnologías utilizadas**
 
 ## 🎨 Desarrollo
 
