@@ -1,6 +1,6 @@
 # Pizzería Mamma Mía
 
-Un proyecto de React con Vite para una pizzería.
+Un proyecto de React con Vite para una pizzería, desplegado en GitHub Pages.
 
 ## 🚀 Tecnologías
 
@@ -11,7 +11,7 @@ Un proyecto de React con Vite para una pizzería.
 
 ## 📋 Requisitos
 
-- Node.js 16+ 
+- Node.js 16+
 - npm o yarn
 
 ## ⚡ Inicio rápido
@@ -38,57 +38,61 @@ npm run dev
 ## 🏗️ Estructura del proyecto
 
 ```
-├── public/              # Archivos estáticos
-├── src/                 # Código fuente
-│   ├── components/      # Componentes de React
-│   │   ├── Navbar.jsx   # Barra de navegación con menú y carrito
-│   │   ├── Home.jsx     # Página principal con pizzas
-│   │   ├── Footer.jsx   # Pie de página
-│   │   └── index.js     # Exportaciones de componentes
-│   ├── utils/           # Funciones utilitarias
-│   │   └── formatters.js # Funciones de formateo (precios, números)
-│   ├── assets/          # Recursos (imágenes, íconos, etc.)
-│   ├── App.jsx          # Componente principal
-│   ├── main.jsx         # Punto de entrada
-│   └── index.css        # Estilos globales
-├── index.html           # Template HTML
-├── vite.config.js       # Configuración de Vite
-└── package.json         # Dependencias y scripts
+├── .github/workflows/    # Deploy automático a GitHub Pages
+├── src/                  # Código fuente
+│   ├── assets/           # Imágenes de las pizzas
+│   ├── components/       # Componentes de React
+│   │   ├── Navbar.jsx    # Barra de navegación con carrito
+│   │   ├── Home.jsx      # Página principal con pizzas
+│   │   ├── CardPizza.jsx # Tarjeta de pizza reutilizable
+│   │   ├── Footer.jsx    # Pie de página
+│   │   └── index.js      # Exportaciones de componentes
+│   ├── data/             # Datos de las pizzas
+│   │   └── pizzas.js     # Array de pizzas (id, nombre, precio, ingredientes, imagen)
+│   ├── utils/            # Funciones utilitarias
+│   │   └── formatters.js # Formateo de precios (es-CL)
+│   ├── App.jsx           # Componente principal (estado del carrito)
+│   ├── main.jsx          # Punto de entrada
+│   └── index.css         # Estilos globales
+├── index.html            # Template HTML
+├── vite.config.js        # Configuración de Vite (base relativa para GitHub Pages)
+└── package.json          # Dependencias y scripts
 ```
 
 ## 🧩 Componentes
 
 ### Navbar
 - **Navegación principal** con logo de la pizzería
-- **Menú condicional** basado en estado de autenticación (token)
-  - Usuario no logueado: 🔐 Login, 🔐 Register
-  - Usuario logueado: 🔓 Profile, 🔒 Logout
-- **Carrito de compras** con total formateado: 🛒 Total: $25.000
-- **Responsive** con Bootstrap navbar
+- **Menú condicional** según estado de autenticación (token) con `useState`
+  - No logueado: 🔐 Login
+  - Logueado: 🔓 Profile, 🔒 Logout
+- **Carrito real**: muestra total y cantidad de pizzas agregadas, con botón "Vaciar"
 
 ### Home
 - **Banner hero** con imagen de fondo
-- **Grid de pizzas** usando componente CardPizza
-- **Tres pizzas fijas** con props específicos
+- **Grid de pizzas** renderizado con `.map()` desde `data/pizzas.js`
 
 ### CardPizza
-- **Componente reutilizable** para mostrar información de pizzas
-- **Props requeridos:**
-  - `name` (string): Nombre de la pizza
-  - `price` (number): Precio de la pizza
-  - `ingredients` (array): Lista de ingredientes
-  - `img` (string): URL de la imagen
-- **Diseño responsive** con Bootstrap cards
-- **Precios formateados** con separador de miles
-- **Botones de acción** (Ver Más, Añadir) sin funcionalidad por ahora
+- **Componente reutilizable** que recibe un objeto `pizza` y una función `onAdd`
+- **Props:**
+  - `pizza` (object): `{ id, name, price, ingredients, img }`
+  - `onAdd` (function): agrega la pizza al carrito
+- **Botón "Añadir" funcional** conectado al estado del carrito en `App.jsx`
 
 ### Footer
-- **Copyright principal:** © 2021 - Pizzería Mamma Mia! - Todos los derechos reservados
-- **Información de contacto:** Ubicación, teléfono y email
-- **Diseño responsive:** Grid de Bootstrap para organizar la información
-- **Branding adicional:** Slogan y créditos de tecnologías
-- **Llamado desde App.jsx:** Integrado en la estructura principal
+- Copyright, información de contacto y branding
 
-## 🎨 Desarrollo
+## 🛒 Carrito
 
-Este proyecto utiliza Vite para un desarrollo rápido con Hot Module Replacement (HMR) y una construcción optimizada para producción.
+El estado del carrito vive en `App.jsx` con `useState`:
+- `addToCart(pizza)` - agrega una pizza
+- `clearCart()` - vacía el carrito
+- `total` y `cartCount` - se pasan como props a `Navbar`
+- Los precios se formatean con `formatPrice()` (es-CL)
+
+## 🌐 Deploy
+
+El proyecto se despliega automáticamente a GitHub Pages con GitHub Actions
+(`.github/workflows/deploy.yml`). Cada push a `main` compila el proyecto y publica
+la carpeta `dist/`. La configuración de `base: './'` en `vite.config.js` permite
+que los assets funcionen bajo la ruta del repositorio.

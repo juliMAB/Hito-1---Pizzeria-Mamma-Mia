@@ -1,9 +1,7 @@
 import CardPizza from './CardPizza'
-import pizzaNapolitana from '../assets/pizza-napolitana.jpg'
-import pizzaEspanola from '../assets/pizza-espanola.jpg'
-import pizzaPepperoni from '../assets/pizza-pepperoni.jpg'
+import pizzas from '../data/pizzas'
 
-const Home = () => {
+const Home = ({ onAdd }) => {
   return (
     <div className="container">
       {/* Banner */}
@@ -11,10 +9,9 @@ const Home = () => {
         <div className="col-12">
           <div className="card bg-dark text-white">
             <img 
-              src={pizzaNapolitana} 
-              className="card-img" 
+              src={pizzas[0].img} 
+              className="card-img banner-img" 
               alt="Pizza" 
-              style={{height: '400px', objectFit: 'cover', opacity: '0.7'}}
             />
             <div className="card-img-overlay d-flex align-items-center justify-content-center">
               <div className="text-center">
@@ -28,24 +25,13 @@ const Home = () => {
 
       {/* Pizzas Grid */}
       <div className="row">
-        <CardPizza
-          name="Napolitana"
-          price={5950}
-          ingredients={["mozzarella", "tomates", "jamón", "orégano"]}
-          img={pizzaNapolitana}
-        />
-        <CardPizza
-          name="Española"
-          price={6950}
-          ingredients={["mozzarella", "gorgonzola", "parmesano", "provolone"]}
-          img={pizzaEspanola}
-        />
-        <CardPizza
-          name="Pepperoni"
-          price={6950}
-          ingredients={["mozzarella", "pepperoni", "orégano"]}
-          img={pizzaPepperoni}
-        />
+        {pizzas.map((pizza) => (
+          <CardPizza
+            key={pizza.id}
+            pizza={pizza}
+            onAdd={onAdd}
+          />
+        ))}
       </div>
     </div>
   )

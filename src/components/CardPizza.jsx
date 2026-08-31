@@ -1,22 +1,23 @@
 import { formatPrice } from '../utils/formatters'
 
-const CardPizza = ({ name, price, ingredients, img }) => {
+const CardPizza = ({ pizza, onAdd }) => {
+  const { name, price, ingredients, img } = pizza
+
   return (
     <div className="col-md-4 mb-4">
       <div className="card h-100 shadow">
         <img 
           src={img} 
-          className="card-img-top" 
+          className="card-img-top pizza-img" 
           alt={name}
-          style={{height: '250px', objectFit: 'cover'}}
         />
         <div className="card-body d-flex flex-column">
           <h5 className="card-title border-bottom pb-2">Pizza {name}</h5>
           <div className="mb-3">
             <h6 className="text-muted mb-2">🍕 Ingredientes:</h6>
             <ul className="list-unstyled">
-              {ingredients.map((ingredient, index) => (
-                <li key={index} className="text-capitalize">
+              {ingredients.map((ingredient) => (
+                <li key={ingredient} className="text-capitalize">
                   <small>• {ingredient}</small>
                 </li>
               ))}
@@ -29,10 +30,14 @@ const CardPizza = ({ name, price, ingredients, img }) => {
               </h4>
             </div>
             <div className="d-flex gap-2 mt-3">
-              <button className="btn btn-outline-dark btn-sm flex-fill">
+              <button type="button" className="btn btn-outline-dark btn-sm flex-fill">
                 👀 Ver Más
               </button>
-              <button className="btn btn-dark btn-sm flex-fill">
+              <button
+                type="button"
+                className="btn btn-dark btn-sm flex-fill"
+                onClick={() => onAdd(pizza)}
+              >
                 🛒 Añadir
               </button>
             </div>
