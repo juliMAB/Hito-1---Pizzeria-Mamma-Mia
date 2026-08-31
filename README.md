@@ -1,6 +1,6 @@
 # Pizzería Mamma Mía
 
-[![GitHub Pages](https://img.shields.io/badge/Deploy-GitHub%20Pages-181717?logo=github)](https://julimab.github.io/Hito-1---Pizzeria-Mamma-Mia/)
+[![Estado del sitio](https://img.shields.io/website?url=https%3A%2F%2Fjulimab.github.io%2FHito-1---Pizzeria-Mamma-Mia%2F&label=Sitio&up_message=Disponible&up_color=success&down_message=No%20disponible%20por%20el%20momento&down_color=critical)](https://julimab.github.io/Hito-1---Pizzeria-Mamma-Mia/)
 
 Un proyecto de React con Vite para una pizzería, desplegado en GitHub Pages.
 
